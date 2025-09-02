@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【基础算法】二分法, 橙子妙妙屋">
-    <meta name="description" content="二分法学习笔记">
+    <meta name="keywords" content="【基础算法】前缀和, 橙子妙妙屋">
+    <meta name="description" content="前缀和算法学习笔记">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【基础算法】二分法 | 橙子妙妙屋</title>
+    <title>【基础算法】前缀和 | 橙子妙妙屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -271,12 +271,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【基础算法】二分法</h1>
+                    <h1 class="description center-align post-title">【基础算法】前缀和</h1>
                 </div>
             </div>
         </div>
@@ -304,8 +304,16 @@
                                 <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/%E4%BA%8C%E5%88%86/">
-                                <span class="chip bg-color">二分</span>
+                            <a href="/tags/%E5%89%8D%E7%BC%80/">
+                                <span class="chip bg-color">前缀</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                                <span class="chip bg-color">哈希表</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%AD%90%E4%B8%B2/">
+                                <span class="chip bg-color">子串</span>
                             </a>
                         
                     </div>
@@ -329,7 +337,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-07-22
+                    2025-09-02
                 </div>
                 
 
@@ -350,108 +358,102 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h1><p>本质上二分能解决的问题都可以用暴力枚举解决，算是一种搜索上的优化。</p>
-<h2 id="二分法解决的问题"><a href="#二分法解决的问题" class="headerlink" title="二分法解决的问题"></a>二分法解决的问题</h2><ul>
-<li><p>低阶用法：</p>
+                <h1 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h1><p>前缀和是一种用于解决<strong>子串</strong>有关问题的信息构建方法，构建方法很简单，就是遍历数组，将数组前i个数的累加和存在sum数组的i位置。提取前缀和往往与哈希表结合在一起，可以快速查找前缀和为x的对应位置。当然，前缀信息不止是求和，也可能是前缀积、前缀异或等等变形，总而言之是一种优化时间复杂度，预处理信息的手段。</p>
+<h2 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h2><p>前缀和的题目还挺考思维的，有时候还涉及到了编码转换的问题，不过感觉这也是一种很巧妙的思想。详见【算法讲解046【必备】构建前缀信息的技巧-解决子数组相关问题】 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sj411q7fi/?share_source=copy_web&vd_source=7221887caa421528ba2e18320bf37f61">https://www.bilibili.com/video/BV1Sj411q7fi/?share_source=copy_web&amp;vd_source=7221887caa421528ba2e18320bf37f61</a> 5.6.7题，以下总结两个最通俗的版本：</p>
 <ul>
-<li>二分查找：已知<strong>从小到大</strong>（或从大到小）排列的一组有序数，从中找到指定的数<ul>
-<li>二分查找相比顺序查找时间复杂度降为logn</li>
-<li>实例：二叉排序树</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>高阶用法：</p>
-<ul>
-<li><p>二分类问题中搜索<strong>边界</strong>。例如找到<strong>最大</strong>可满足条件的值或<strong>最小</strong>不可满足条件的值（二分答案法）</p>
-<ul>
-<li><p>也要求有序</p>
-</li>
-<li><p>需要事先给定&#x2F;找到最大搜索范围，利用单调性缩小范围</p>
-</li>
-<li><p>快排算法（感觉思路上比较像</p>
-</li>
-</ul>
-</li>
-<li><p>寻找极值。</p>
-<ul>
-<li>可以无序</li>
-<li>任意相邻两个数不能重复（保证峰值的唯一性）</li>
-<li>默认搜索范围两端的数无穷小（保证存在极值）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>二分搜索需要用到三个指针：left、mid、right，分别确定搜索左边界、中心和右边界，并根据中心指向值不断对搜索范围做调整，<strong>直到左边界超过右边界，说明已经完成搜索</strong>，返回边界值或者不存在边界。</p>
-<p>低阶用法和高阶用法在原理上有所不同，区别在于中心值所触发的条件判断上。</p>
-<ul>
-<li><p>查找某个指定的数时，mid指针所指的数据只存在是或者否两种可能，因此一旦搜索到满足条件的值就可以退出循环，且<strong>返回值就是mid所指的值（如果查找成功的话）</strong></p>
-</li>
-<li><p>查找边界时，无论mid所指值是否满足条件，都要进一步缩小范围查找是否存在更大（小）的值满足条件。这与查指定数不同，因为mid不一定是满足条件的最大（小）值，因此不能直接返回mid值，循环不能提前退出。</p>
-<p>退出循环前的最后一轮搜索存在两种情况：</p>
-<ol>
-<li>mid值能满足条件，说明mid值即为所求；</li>
-<li>mid值不能满足条件，说明<strong>最近一轮满足条件的</strong>查找的值即为所求。（也可以理解最近一轮满足条件的查找之后没有再能满足要求的mid值了，不一定是上一轮）</li>
-</ol>
-</li>
-</ul>
+<li><p><strong>低阶版：子数组范围求和</strong></p>
+<p>假定现在有一数组如下表：</p>
 <table>
 <thead>
 <tr>
-<th align="center">2</th>
-<th align="center">4</th>
-<th align="center">4</th>
+<th align="center">3</th>
 <th align="center">5</th>
-<th align="center">7</th>
-<th align="center">9</th>
-<th align="center">13</th>
+<th align="center">-1</th>
+<th align="center">0</th>
+<th align="center">2</th>
+<th align="center">-3</th>
+<th align="center">4</th>
 </tr>
 </thead>
 </table>
-<p>例如需要在如上序列寻找值&gt;&#x3D; 5的最小数的位置，<strong>第一轮搜索mid指向5，满足条件，但是不代表5是最小满足条件的位置（有可能5的左边还是5，那最左边的5才是最小满足条件的）</strong>。因为当前位置已满足条件，所以mid右侧的所有值都不可能是最小满足条件的了，可以将搜索范围减小至左边一半（令right&#x3D;mid-1）。</p>
-<p>第二轮mid指向4，不满足条件，说明左侧更小的值也不可能满足条件，范围又进一步缩小（left&#x3D;mid+1）。</p>
-<p>第三轮mid仍然指向4，且此时left&#x3D;&#x3D;right是最后一轮，说明满足条件的最小位置是最近一轮满足条件的mid值，即第一轮mid所指的5。</p>
-<p>可见，最终答案不一定是当前mid值，而是最近一轮满足条件的mid值。</p>
-<p><strong>那么如何正确记录答案的位置？</strong></p>
-<p>引入新变量ans，**每轮搜索中，如果mid所指的值满足判断条件（在上面的例子里指num&gt;&#x3D;5），那么令ans&#x3D;mid；不满足则不记录。**这样就保证了ans永远记录了最近一轮满足条件的mid值。</p>
-<ul>
-<li>寻找局部最值利用的是搜索范围两端的单调性来缩小搜索范围。</li>
-</ul>
+<p>题目要求求解任意给定区间上子数组的和。</p>
+<p>传统方法是遍历数组，找到区间端点L和R进行累加，这样做的缺点是每次累加最坏情况是要遍历整个数组，那么累加m次的时间复杂度为O(m*n)，n为数组长度。如果我们事先求解该数组的前缀和如下：</p>
 <table>
 <thead>
 <tr>
 <th align="center">3</th>
 <th align="center">8</th>
-<th align="center">6</th>
+<th align="center">7</th>
+<th align="center">7</th>
 <th align="center">9</th>
-<th align="center">4</th>
-<th align="center">1</th>
+<th align="center">6</th>
+<th align="center">10</th>
 </tr>
 </thead>
 </table>
-<p>例如如上序列，左端3-&gt;8增长，右端4-&gt;1衰减。由此特性可知，无论中间的值如何变化，都必然存在一个极大值。第一轮mid指向6，左侧8-&gt;6衰减，说明3-6之间存在极大值；右侧6-&gt;9增长，说明6-1之间也存在极大值。</p>
-<h2 id="算法模板"><a href="#算法模板" class="headerlink" title="算法模板"></a><strong>算法模板</strong></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//left = 左边界 right = 右边界</span><br><span class="line"><span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">    mid = (left + right)/<span class="number">2</span>; //位运算可以写成mid = left + (right-left)&gt;&gt;<span class="number">1</span></span><br><span class="line">    //假设找满足条件的最大值</span><br><span class="line">    <span class="keyword">if</span>(judge(mid))&#123;   </span><br><span class="line">        left = mid + <span class="number">1</span>; </span><br><span class="line">        ans = mid;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        right = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><blockquote>
-<p>儿童节那天有 K位小朋友到小明家做客。小明拿出了珍藏的巧克力招待小朋友们。</p>
-<p>小明一共有 N 块巧克力，其中第 i块是 H_i * W_i 的方格组成的长方形。为了公平起见，</p>
-<p>小明需要从这 N块巧克力中切出 K 块巧克力分给小朋友们。切出的巧克力需要满足：</p>
-<ol>
-<li>形状是正方形，边长是整数;</li>
-<li>大小相同;</li>
-</ol>
-<p>例如一块 6×5的巧克力可以切出 6块 2×2的巧克力或者 2 块 3×3 的巧克力。</p>
-<p>当然小朋友们都希望得到的巧克力尽可能大，你能帮小明计算出最大的边长是多少么？</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include &lt;stdio.h&gt;</span></span><br><span class="line"><span class="comment">#include &lt;stdlib.h&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> judge(<span class="built_in">int</span> **<span class="built_in">map</span>,<span class="built_in">int</span> middle,<span class="built_in">int</span> N ,<span class="built_in">int</span> K)&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">int</span> num = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">    <span class="built_in">int</span> row = <span class="built_in">map</span>[i][<span class="number">0</span>];</span><br><span class="line">    <span class="built_in">int</span> col = <span class="built_in">map</span>[i][<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">if</span>(row &gt;=middle &amp;&amp; col &gt;=middle)&#123;   </span><br><span class="line">      //如果第i块巧克力能用middle分，计算能分出来的块数</span><br><span class="line">      num +=row/middle*(col/middle);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  //比较快数是否大于K</span><br><span class="line">  <span class="keyword">if</span>(num&gt;=K) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">else</span>  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> erfen(<span class="built_in">int</span>**<span class="built_in">map</span>,<span class="built_in">int</span> N, <span class="built_in">int</span> K,<span class="built_in">int</span> flag)&#123;</span><br><span class="line">  <span class="built_in">int</span> left = <span class="number">1</span>;</span><br><span class="line">  <span class="built_in">int</span> right = flag;</span><br><span class="line">  <span class="built_in">int</span> middle = (left + right)/<span class="number">2</span>;</span><br><span class="line">  <span class="built_in">int</span> result = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">  	<span class="built_in">int</span> k=judge(<span class="built_in">map</span>,middle,N,K);</span><br><span class="line">    <span class="keyword">if</span>(k)&#123;</span><br><span class="line">      	left = middle + <span class="number">1</span>;</span><br><span class="line">    	result = middle;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		right = middle -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    middle = (left+right)/<span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> main(<span class="built_in">int</span> argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line">  <span class="built_in">int</span> N;</span><br><span class="line">  <span class="built_in">int</span> K;</span><br><span class="line">  <span class="built_in">int</span> flag=<span class="number">1</span>;</span><br><span class="line">  scanf(<span class="string">&quot;%d&quot;</span>,&amp;N);</span><br><span class="line">  scanf(<span class="string">&quot;%d&quot;</span>,&amp;K);</span><br><span class="line">  <span class="built_in">int</span> **<span class="built_in">map</span> = (<span class="built_in">int</span>**)malloc(sizeof(<span class="built_in">int</span>*)*N);</span><br><span class="line">  <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">    <span class="built_in">map</span>[i]=(<span class="built_in">int</span>*)malloc(sizeof(<span class="built_in">int</span>)*<span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">    <span class="built_in">int</span> temp1;</span><br><span class="line">    scanf(<span class="string">&quot;%d&quot;</span>,&amp;temp1);</span><br><span class="line">    <span class="built_in">map</span>[i][<span class="number">0</span>]=temp1;</span><br><span class="line">    <span class="built_in">int</span> temp2;</span><br><span class="line">    scanf(<span class="string">&quot;%d&quot;</span>,&amp;temp2);</span><br><span class="line">    <span class="built_in">map</span>[i][<span class="number">1</span>]=temp2;</span><br><span class="line">  //记录最大边长</span><br><span class="line">  <span class="keyword">if</span>(temp1&gt;flag) flag=temp1;</span><br><span class="line">    <span class="keyword">if</span>(temp2&gt;flag) flag=temp2;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">int</span> result = erfen(<span class="built_in">map</span>,N,K,flag);</span><br><span class="line">  printf(<span class="string">&quot;%d&quot;</span>,result);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<p>此时假设求解区间（1，3）上的和，只需要用<code>3位置的前缀和-0位置的前缀和</code>，求解（i，j）上的和，只需用<code>j位置的前缀和-（i-1）位置的前缀和</code>，查询时间复杂度为O(1),构建前缀信息时间复杂度为O(n)。</p>
+</li>
+<li><p><strong>高阶版：求和满足求和要求的最长子数组的长度（或出现次数等）</strong></p>
+</li>
+</ul>
+<p>​	与低阶版的不同之处有两点，其一是求解的子数组不再是任意区间上的和，而是求解和满足要求的子数组长度，也就是拿着前缀和找位置（<strong>给键求值</strong>）；其二是最长，需要多次比较，记忆之前满足条件的位置，每次比较记录的是最长的那一个，也就是说，每个前缀和键值对是<strong>唯一的</strong>。根据此特性可以引入哈希表。不过这么说还比较抽象，具体原理如下。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>还是之前的数组</p>
+<table>
+<thead>
+<tr>
+<th align="center">3</th>
+<th align="center">5</th>
+<th align="center">-1</th>
+<th align="center">0</th>
+<th align="center">2</th>
+<th align="center">-3</th>
+<th align="center">4</th>
+</tr>
+</thead>
+</table>
+<p>前缀和数组</p>
+<table>
+<thead>
+<tr>
+<th align="center">3</th>
+<th align="center">8</th>
+<th align="center">7</th>
+<th align="center">7</th>
+<th align="center">9</th>
+<th align="center">6</th>
+<th align="center">10</th>
+</tr>
+</thead>
+</table>
+<p>现在要求和为2的最长的子数组。如何寻找最长的子数组呢？<strong>只要找到以j位置为端点的最长的子数组，遍历一遍数组，选择其中最长的一个即可</strong>。传统办法只能从0位置开始逐个遍历，写两层循环，遇到和为2的情况都记录下来，最后挑选最长的。这样的复杂度至少为O(n^2)。</p>
+<p>再来看使用前缀和的情况，可以将时间缩短到O(n)。和为2的子数组可以转化为<strong>j位置的前缀和与i位置的前缀和之差为2</strong>，那么怎么找到j位置最长的子数组呢？</p>
+<p><strong>只要以j位置为结尾，向前找前缀和为sum[j] - 2 &#x3D;&#x3D;最早&#x3D;&#x3D;出现的位置i，那么子数组（i+1，j）的和必为2。</strong></p>
+<p>比如这个数组在5位置的时候，sum[5]&#x3D;9，需要找sum[5]-2&#x3D;7最早出现的位置，sum[2]&#x3D;sum[3]&#x3D;7，也就是说(3,4)和（4，4）的子数组都满足和为2的条件，但是要想找到最长的子数组，一定要求i位置尽可能早的出现，这样子串的长度才越长。</p>
+<p>引入哈希表来记录sum[j] - 2最早出现的位置，查询表中是否存在sum[j] - 2的键，不存在说明是最早出现的位置，并记录为当前最长长度，否则说明此前已出现过，最长长度取当前记录值和 j - 查表结果（当前位置最长子数组长度）的最大值。检查sum[j]是否在表中，否则添加记录</p>
+<p>这种做法在遍历数组求前缀和的同时，查找了每个位置出现最长的子数组长度。前缀和的好处是“记忆”了之前搜索过的信息。例如，使用暴力方法，当处于2位置时，需要计算3+5， 3+5-1，当处于3位置的时候，又要重新计算 3+5，3+5-1， 3+5-1+0，不难发现这些重复计算的部分可以转化为前缀和存储，从而减少计算时间。（其实感觉应该是先有的暴力算法的思路，通过观察发现可以用前缀和+哈希优化）</p>
 <blockquote>
 <p>[!NOTE]</p>
-<p>一开始写错是因为以为如果分出的巧克力块数刚好等于要求的块数，就不需要再遍历了，但实际上按不同大小分巧克力可能可以分出相同的块数。</p>
+<p>哈希表必须提前插入一项（0，-1），表示前缀和为0的位置在-1处，比如要求和为7的数组长度，在位置2处应查询是否存在 7 - 7 &#x3D; 0的键，查到结果为-1，说明从0-2整个子串是最长的。</p>
 </blockquote>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int sum = 0; //i位置的前缀和</span><br><span class="line">int aim;  //目标和</span><br><span class="line">int ans = 0; //答案</span><br><span class="line">std::unordered_map&lt;int,int&gt; umap=&#123;&#125;;</span><br><span class="line">umap.insert(&#123;0,-1&#125;); //重要</span><br><span class="line">for(int i=0;i&lt;len;i++)&#123;</span><br><span class="line">    sum+=num[i];</span><br><span class="line">    auto search = umap.find(sum[i]-aim);</span><br><span class="line">    if(search!=umap.end())</span><br><span class="line">        ans = max(i-(search-&gt;second),ans);</span><br><span class="line">    else ans = i + 1;</span><br><span class="line"> 	if(umap.find(sum[i])!=umap.end())</span><br><span class="line">        umap.insert(&#123;sum[i],i&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>Leetcode 1124题（<strong>涉及连续函数的单调性问题</strong>）</p>
+<blockquote>
+<p>给你一份工作时间表 <code>hours</code>，上面记录着某一位员工每天的工作小时数。</p>
+<p>我们认为当员工一天中的工作小时数大于 <code>8</code> 小时的时候，那么这一天就是「<strong>劳累的一天</strong>」。</p>
+<p>所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 <strong>大于</strong>「不劳累的天数」。</p>
+<p>请你返回「表现良好时间段」的最大长度。</p>
+<p>给你一份工作时间表 <code>hours</code>，上面记录着某一位员工每天的工作小时数。</p>
+<p>我们认为当员工一天中的工作小时数大于 <code>8</code> 小时的时候，那么这一天就是「<strong>劳累的一天</strong>」。</p>
+<p>所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 <strong>大于</strong>「不劳累的天数」。</p>
+<p>请你返回「表现良好时间段」的最大长度。</p>
+<p><strong>示例 1：</strong></p>
+<p>输入：hours &#x3D; [9,9,6,0,6,6,9]<br>输出：3<br>解释：最长的表现良好时间段是 [9,9,6]。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;unordered_map&gt;</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int longestWPI(vector&lt;int&gt;&amp; hours) &#123;</span><br><span class="line">        std::unordered_map&lt;int,int&gt; umap=&#123;&#125;;</span><br><span class="line">        //将时间表转换为1,-1</span><br><span class="line">        int len = hours.size();</span><br><span class="line">        int ans=0;</span><br><span class="line">        vector&lt;int&gt; sum(len);</span><br><span class="line">        if(hours[0]&gt;8) sum[0]=1;</span><br><span class="line">        else sum[0]=-1;</span><br><span class="line">        umap.insert(&#123;0,-1&#125;);</span><br><span class="line">        for(int i=0;i&lt;len;i++)&#123;</span><br><span class="line">            if(hours[i]&gt;8)&#123;</span><br><span class="line">                hours[i]=1;</span><br><span class="line">            &#125;else hours[i]= -1;</span><br><span class="line"></span><br><span class="line">            if(i&gt;=1) </span><br><span class="line">            sum[i]= sum[i-1]+hours[i];</span><br><span class="line"></span><br><span class="line">            if(sum[i]&gt;0) ans = i+1;  //不是求和等于目标值，而是&gt;目标值，利用函数单调性得出判定条件</span><br><span class="line">            else&#123;</span><br><span class="line">                auto search = umap.find(sum[i]-1);</span><br><span class="line">                if(search!=umap.end())</span><br><span class="line">                    ans = max(i-(search-&gt;second),ans);</span><br><span class="line">                //哈希表存sum[i]：最早出现位置</span><br><span class="line">            </span><br><span class="line">            &#125;</span><br><span class="line">            if(umap.find(sum[i])!=umap.end())</span><br><span class="line">                umap.insert(&#123;sum[i],i&#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 
                 
             </div>
@@ -478,7 +480,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chang3m4n.github.io/2025/07/22/%E3%80%90%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E3%80%91%E4%BA%8C%E5%88%86%E6%B3%95/">https://chang3m4n.github.io/2025/07/22/%E3%80%90%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E3%80%91%E4%BA%8C%E5%88%86%E6%B3%95/</a>
+                    <a href="https://chang3m4n.github.io/2025/09/02/%E3%80%90%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E3%80%91%E5%89%8D%E7%BC%80%E5%92%8C/">https://chang3m4n.github.io/2025/09/02/%E3%80%90%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E3%80%91%E5%89%8D%E7%BC%80%E5%92%8C/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -520,8 +522,16 @@
                                     <span class="chip bg-color">算法</span>
                                 </a>
                             
-                                <a href="/tags/%E4%BA%8C%E5%88%86/">
-                                    <span class="chip bg-color">二分</span>
+                                <a href="/tags/%E5%89%8D%E7%BC%80/">
+                                    <span class="chip bg-color">前缀</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                                    <span class="chip bg-color">哈希表</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%AD%90%E4%B8%B2/">
+                                    <span class="chip bg-color">子串</span>
                                 </a>
                             
                         </div>
@@ -600,9 +610,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2025/09/02/%E3%80%90%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E3%80%91%E5%89%8D%E7%BC%80%E5%92%8C/">
                     <div class="card-image">
@@ -620,9 +631,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-09-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-09-02
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -635,6 +646,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -662,7 +674,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2025/07/22/%E3%80%90%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E3%80%91%E4%BA%8C%E5%88%86%E6%B3%95/">
@@ -696,7 +708,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
