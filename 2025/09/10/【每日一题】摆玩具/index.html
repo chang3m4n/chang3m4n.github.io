@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【基础算法】前缀和, 橙子妙妙屋">
-    <meta name="description" content="前缀和算法学习笔记">
+    <meta name="keywords" content="【每日一题】摆玩具, 橙子妙妙屋">
+    <meta name="description" content="不喜欢写思维题。。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【基础算法】前缀和 | 橙子妙妙屋</title>
+    <title>【每日一题】摆玩具 | 橙子妙妙屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -271,12 +271,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【基础算法】前缀和</h1>
+                    <h1 class="description center-align post-title">【每日一题】摆玩具</h1>
                 </div>
             </div>
         </div>
@@ -300,20 +300,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
+                            <a href="/tags/%E6%80%9D%E7%BB%B4/">
+                                <span class="chip bg-color">思维</span>
                             </a>
                         
-                            <a href="/tags/%E5%89%8D%E7%BC%80/">
-                                <span class="chip bg-color">前缀</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
-                                <span class="chip bg-color">哈希表</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%AD%90%E4%B8%B2/">
-                                <span class="chip bg-color">子串</span>
+                            <a href="/tags/%E6%8E%92%E5%BA%8F/">
+                                <span class="chip bg-color">排序</span>
                             </a>
                         
                     </div>
@@ -324,8 +316,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                算法学习
+                            <a href="/categories/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98-%E6%91%86%E7%8E%A9%E5%85%B7/" class="post-category">
+                                每日一题 | 摆玩具
                             </a>
                         
                     </div>
@@ -337,7 +329,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-09-02
+                    2025-09-10
                 </div>
                 
 
@@ -358,101 +350,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h1><p>前缀和是一种用于解决<strong>子串</strong>有关问题的信息构建方法，构建方法很简单，就是遍历数组，将数组前i个数的累加和存在sum数组的i位置。提取前缀和往往与哈希表结合在一起，可以快速查找前缀和为x的对应位置。当然，前缀信息不止是求和，也可能是前缀积、前缀异或等等变形，总而言之是一种优化时间复杂度，预处理信息的手段。</p>
-<h2 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h2><p>前缀和的题目还挺考思维的，有时候还涉及到了编码转换的问题，不过感觉这也是一种很巧妙的思想。详见【算法讲解046【必备】构建前缀信息的技巧-解决子数组相关问题】 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sj411q7fi/?share_source=copy_web&vd_source=7221887caa421528ba2e18320bf37f61">https://www.bilibili.com/video/BV1Sj411q7fi/?share_source=copy_web&amp;vd_source=7221887caa421528ba2e18320bf37f61</a> 5.6.7题，以下总结两个最通俗的版本：</p>
-<ul>
-<li><p><strong>低阶版：子数组范围求和</strong></p>
-<p>假定现在有一数组如下表：</p>
-<table>
-<thead>
-<tr>
-<th align="center">3</th>
-<th align="center">5</th>
-<th align="center">-1</th>
-<th align="center">0</th>
-<th align="center">2</th>
-<th align="center">-3</th>
-<th align="center">4</th>
-</tr>
-</thead>
-</table>
-<p>题目要求求解任意给定区间上子数组的和。</p>
-<p>传统方法是遍历数组，找到区间端点L和R进行累加，这样做的缺点是每次累加最坏情况是要遍历整个数组，那么累加m次的时间复杂度为O(m*n)，n为数组长度。如果我们事先求解该数组的前缀和如下：</p>
-<table>
-<thead>
-<tr>
-<th align="center">3</th>
-<th align="center">8</th>
-<th align="center">7</th>
-<th align="center">7</th>
-<th align="center">9</th>
-<th align="center">6</th>
-<th align="center">10</th>
-</tr>
-</thead>
-</table>
-<p>此时假设求解区间（1，3）上的和，只需要用<code>3位置的前缀和-0位置的前缀和</code>，求解（i，j）上的和，只需用<code>j位置的前缀和-（i-1）位置的前缀和</code>，查询时间复杂度为O(1),构建前缀信息时间复杂度为O(n)。</p>
-</li>
-<li><p><strong>高阶版：求和满足求和要求的最长子数组的长度（或出现次数等）</strong></p>
-</li>
-</ul>
-<p>​	与低阶版的不同之处有两点，其一是求解的子数组不再是任意区间上的和，而是求解和满足要求的子数组长度，也就是拿着前缀和找位置（<strong>给键求值</strong>）；其二是最长，需要多次比较，记忆之前满足条件的位置，每次比较记录的是最长的那一个，也就是说，每个前缀和键值对是<strong>唯一的</strong>。根据此特性可以引入哈希表。不过这么说还比较抽象，具体原理如下。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>还是之前的数组</p>
-<table>
-<thead>
-<tr>
-<th align="center">3</th>
-<th align="center">5</th>
-<th align="center">-1</th>
-<th align="center">0</th>
-<th align="center">2</th>
-<th align="center">-3</th>
-<th align="center">4</th>
-</tr>
-</thead>
-</table>
-<p>前缀和数组</p>
-<table>
-<thead>
-<tr>
-<th align="center">3</th>
-<th align="center">8</th>
-<th align="center">7</th>
-<th align="center">7</th>
-<th align="center">9</th>
-<th align="center">6</th>
-<th align="center">10</th>
-</tr>
-</thead>
-</table>
-<p>现在要求和为2的最长的子数组。如何寻找最长的子数组呢？<strong>只要找到以j位置为端点的最长的子数组，遍历一遍数组，选择其中最长的一个即可</strong>。传统办法只能从0位置开始逐个遍历，写两层循环，遇到和为2的情况都记录下来，最后挑选最长的。这样的复杂度至少为O(n^2)。</p>
-<p>再来看使用前缀和的情况，可以将时间缩短到O(n)。和为2的子数组可以转化为<strong>j位置的前缀和与i位置的前缀和之差为2</strong>，那么怎么找到j位置最长的子数组呢？</p>
-<p><strong>只要以j位置为结尾，向前找前缀和为sum[j] - 2 &#x3D;&#x3D;最早&#x3D;&#x3D;出现的位置i，那么子数组（i+1，j）的和必为2。</strong></p>
-<p>比如这个数组在5位置的时候，sum[5]&#x3D;9，需要找sum[5]-2&#x3D;7最早出现的位置，sum[2]&#x3D;sum[3]&#x3D;7，也就是说(3,4)和（4，4）的子数组都满足和为2的条件，但是要想找到最长的子数组，一定要求i位置尽可能早的出现，这样子串的长度才越长。</p>
-<p>引入哈希表来记录sum[j] - 2最早出现的位置，查询表中是否存在sum[j] - 2的键，不存在说明是最早出现的位置，并记录为当前最长长度，否则说明此前已出现过，最长长度取当前记录值和 j - 查表结果（当前位置最长子数组长度）的最大值。检查sum[j]是否在表中，否则添加记录</p>
-<p>这种做法在遍历数组求前缀和的同时，查找了每个位置出现最长的子数组长度。前缀和的好处是“记忆”了之前搜索过的信息。例如，使用暴力方法，当处于2位置时，需要计算3+5， 3+5-1，当处于3位置的时候，又要重新计算 3+5，3+5-1， 3+5-1+0，不难发现这些重复计算的部分可以转化为前缀和存储，从而减少计算时间。（其实感觉应该是先有的暴力算法的思路，通过观察发现可以用前缀和+哈希优化）</p>
-<blockquote>
-<p>[!NOTE]</p>
-<p>哈希表必须提前插入一项（0，-1），表示前缀和为0的位置在-1处，比如要求和为7的数组长度，在位置2处应查询是否存在 7 - 7 &#x3D; 0的键，查到结果为-1，说明从0-2整个子串是最长的。</p>
+                <h1 id="每日一题-摆玩具（⭐⭐）"><a href="#每日一题-摆玩具（⭐⭐）" class="headerlink" title="每日一题 | 摆玩具（⭐⭐）"></a>每日一题 | 摆玩具（⭐⭐）</h1><blockquote>
+<p>问题描述<br>小蓝是一个热爱收集玩具的小伙子，他拥有n个不同的玩具。这天，他把n个玩具按照高度顺序从矮到高摆放在了窗台上，然后，他希望将这些玩具分成k个段，使得所有分段的极差之和尽可能小。具体来说，你需要将一个长度为n的序列分为k段。你能帮助小蓝找到最小值是多少吗？<br>极差：是指每个分段中最高和最矮玩具高度之差，只含一个元素的分段极差为0.<br>分段：即每一段在原始序列中是一段连续区间。</p>
+<p>输入格式<br>第一行输入两个整数n,k，代表玩具数量和需要分段的数量。<br>第二行输入n个整数 {h1,h2,…,hn}，代表每个玩具的高度。</p>
+<p>输出格式<br>输出一个整数，表示最小的极差和。</p>
+<p>评测数据范围<br>1≤k≤n≤10^5<br>1≤h1≤h2≤h3≤…≤hn≤10^9  (int 够存)</p>
 </blockquote>
-<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int sum = 0; //i位置的前缀和</span><br><span class="line">int aim;  //目标和</span><br><span class="line">int ans = 0; //答案</span><br><span class="line">std::unordered_map&lt;int,int&gt; umap=&#123;&#125;;</span><br><span class="line">umap.insert(&#123;0,-1&#125;); //重要</span><br><span class="line">for(int i=0;i&lt;len;i++)&#123;</span><br><span class="line">    sum+=num[i];</span><br><span class="line">    auto search = umap.find(sum[i]-aim);</span><br><span class="line">    if(search!=umap.end())</span><br><span class="line">        ans = max(i-(search-&gt;second),ans);</span><br><span class="line">    else ans = i + 1;</span><br><span class="line"> 	if(umap.find(sum[i])!=umap.end())</span><br><span class="line">        umap.insert(&#123;sum[i],i&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一开始漏条件了，没看见分成k段是已知的。。。然后看到标签打的贪心，但是看了题解感觉和贪心就沾了一丁点关系。。这就是个数学题。。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>题目要求无非就是找到分段的位置，比如3，6，10，12，15，砍两刀，假设分成 3 6 10 | 12 | 15，极差和为（10-3）+ 0 + 0 &#x3D; 7，可以发现7其实是第一段内每相邻两个数的差之和（6-3）+（10-6），而砍之前每相邻两数之差的总和sum与分段之后的极差之和aim两者的关系是，<strong>aim &#x3D; sum - k个被切分位置前后两数的差loss</strong>，这个例子里loss分别为（12-10）和（15-12），而sum值是固定的。由此可知，要想aim最小，即loss最大。每个位置都有loss，求出loss数组，进行排序，减去最后k个数即为所求。（非要说贪心的话就是每次减去的都是最大值。。）</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,k;</span><br><span class="line">    cin &gt;&gt;n&gt;&gt;k;</span><br><span class="line">    vector&lt;int&gt; h(n);</span><br><span class="line">    vector&lt;int&gt; b(n-1);</span><br><span class="line">    int result = 0;</span><br><span class="line">    for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">      cin &gt;&gt; h[i];</span><br><span class="line">      if(i!=0)&#123;</span><br><span class="line">        b[i-1] = h[i] - h[i-1];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(b.begin(), b.end());</span><br><span class="line">    //忽然发现k是分段数不是切分次数</span><br><span class="line">    for(int i=0;i&lt;n-k;i++)&#123;</span><br><span class="line">      result += b[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; result;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p>Leetcode 1124题（<strong>涉及连续函数的单调性问题</strong>）</p>
-<blockquote>
-<p>给你一份工作时间表 <code>hours</code>，上面记录着某一位员工每天的工作小时数。</p>
-<p>我们认为当员工一天中的工作小时数大于 <code>8</code> 小时的时候，那么这一天就是「<strong>劳累的一天</strong>」。</p>
-<p>所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 <strong>大于</strong>「不劳累的天数」。</p>
-<p>请你返回「表现良好时间段」的最大长度。</p>
-<p>给你一份工作时间表 <code>hours</code>，上面记录着某一位员工每天的工作小时数。</p>
-<p>我们认为当员工一天中的工作小时数大于 <code>8</code> 小时的时候，那么这一天就是「<strong>劳累的一天</strong>」。</p>
-<p>所谓「表现良好的时间段」，意味在这段时间内，「劳累的天数」是严格 <strong>大于</strong>「不劳累的天数」。</p>
-<p>请你返回「表现良好时间段」的最大长度。</p>
-<p><strong>示例 1：</strong></p>
-<p>输入：hours &#x3D; [9,9,6,0,6,6,9]<br>输出：3<br>解释：最长的表现良好时间段是 [9,9,6]。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;unordered_map&gt;</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int longestWPI(vector&lt;int&gt;&amp; hours) &#123;</span><br><span class="line">        std::unordered_map&lt;int,int&gt; umap=&#123;&#125;;</span><br><span class="line">        //将时间表转换为1,-1</span><br><span class="line">        int len = hours.size();</span><br><span class="line">        int ans=0;</span><br><span class="line">        vector&lt;int&gt; sum(len);</span><br><span class="line">        if(hours[0]&gt;8) sum[0]=1;</span><br><span class="line">        else sum[0]=-1;</span><br><span class="line">        umap.insert(&#123;0,-1&#125;);</span><br><span class="line">        for(int i=0;i&lt;len;i++)&#123;</span><br><span class="line">            if(hours[i]&gt;8)&#123;</span><br><span class="line">                hours[i]=1;</span><br><span class="line">            &#125;else hours[i]= -1;</span><br><span class="line"></span><br><span class="line">            if(i&gt;=1) </span><br><span class="line">            sum[i]= sum[i-1]+hours[i];</span><br><span class="line"></span><br><span class="line">            if(sum[i]&gt;0) ans = i+1;  //不是求和等于目标值，而是&gt;目标值，利用函数单调性得出判定条件</span><br><span class="line">            else&#123;</span><br><span class="line">                auto search = umap.find(sum[i]-1);</span><br><span class="line">                if(search!=umap.end())</span><br><span class="line">                    ans = max(i-(search-&gt;second),ans);</span><br><span class="line">                //哈希表存sum[i]：最早出现位置</span><br><span class="line">            </span><br><span class="line">            &#125;</span><br><span class="line">            if(umap.find(sum[i])!=umap.end())</span><br><span class="line">                umap.insert(&#123;sum[i],i&#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在打算逐渐过渡到cpp来写，每次补充一点相关知识：</p>
+<h2 id="sort函数用法"><a href="#sort函数用法" class="headerlink" title="sort函数用法"></a>sort函数用法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">//sort 是不稳定排序（相等元素的相对位置可能改变） stable_sort稳定 时间复杂度为 O(nlogn)</span><br><span class="line"></span><br><span class="line">sort(起始地址, 结束地址（左闭右开）, [比较函数]（可选）); //默认升序</span><br><span class="line"></span><br><span class="line">//对容器排序</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">vector&lt;int&gt; vec = &#123;5, 2, 7, 3&#125;;</span><br><span class="line">sort(vec.begin(), vec.end());</span><br><span class="line"></span><br><span class="line">// 降序排序（需要包含 &lt;functional&gt; 头文件）</span><br><span class="line">sort(arr, arr + n, greater&lt;int&gt;());</span><br><span class="line"></span><br><span class="line">// 自定义比较函数</span><br><span class="line">bool compare(int a, int b) &#123;</span><br><span class="line">    return a &gt; b; // 降序</span><br><span class="line">&#125;</span><br><span class="line">sort(arr, arr + n, compare); </span><br><span class="line"></span><br><span class="line">//自定义类型排序（必须有比较函数）</span><br><span class="line">bool compareScore(const Student&amp; a, const Student&amp; b) &#123;</span><br><span class="line">    return a.score &gt; b.score;</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;Student&gt; students = &#123;</span><br><span class="line">        &#123;&quot;Alice&quot;, 85&#125;,</span><br><span class="line">        &#123;&quot;Bob&quot;, 92&#125;,</span><br><span class="line">        &#123;&quot;Charlie&quot;, 78&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">sort(students.begin(), students.end(), compareScore);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
                 
@@ -480,7 +391,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chang3m4n.github.io/2025/09/02/%E3%80%90%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E3%80%91%E5%89%8D%E7%BC%80%E5%92%8C/">https://chang3m4n.github.io/2025/09/02/%E3%80%90%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E3%80%91%E5%89%8D%E7%BC%80%E5%92%8C/</a>
+                    <a href="https://chang3m4n.github.io/2025/09/10/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E3%80%91%E6%91%86%E7%8E%A9%E5%85%B7/">https://chang3m4n.github.io/2025/09/10/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E3%80%91%E6%91%86%E7%8E%A9%E5%85%B7/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -518,20 +429,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
+                                <a href="/tags/%E6%80%9D%E7%BB%B4/">
+                                    <span class="chip bg-color">思维</span>
                                 </a>
                             
-                                <a href="/tags/%E5%89%8D%E7%BC%80/">
-                                    <span class="chip bg-color">前缀</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
-                                    <span class="chip bg-color">哈希表</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%AD%90%E4%B8%B2/">
-                                    <span class="chip bg-color">子串</span>
+                                <a href="/tags/%E6%8E%92%E5%BA%8F/">
+                                    <span class="chip bg-color">排序</span>
                                 </a>
                             
                         </div>
@@ -610,9 +513,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2025/09/10/%E3%80%90%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E3%80%91%E6%91%86%E7%8E%A9%E5%85%B7/">
                     <div class="card-image">
@@ -630,9 +534,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-09-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-09-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -645,6 +549,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -667,24 +572,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/07/22/%E3%80%90%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E3%80%91%E4%BA%8C%E5%88%86%E6%B3%95/">
+                <a href="/2025/09/02/%E3%80%90%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E3%80%91%E5%89%8D%E7%BC%80%E5%92%8C/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="【基础算法】二分法">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="【基础算法】前缀和">
                         
-                        <span class="card-title">【基础算法】二分法</span>
+                        <span class="card-title">【基础算法】前缀和</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            二分法学习笔记
+                            前缀和算法学习笔记
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-07-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-09-02
                             </span>
                         <span class="publish-author">
                             
@@ -705,8 +610,16 @@
                         <span class="chip bg-color">算法</span>
                     </a>
                     
-                    <a href="/tags/%E4%BA%8C%E5%88%86/">
-                        <span class="chip bg-color">二分</span>
+                    <a href="/tags/%E5%89%8D%E7%BC%80/">
+                        <span class="chip bg-color">前缀</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                        <span class="chip bg-color">哈希表</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%90%E4%B8%B2/">
+                        <span class="chip bg-color">子串</span>
                     </a>
                     
                 </div>
