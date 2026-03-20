@@ -87,3 +87,57 @@
     line-height: 48px;
     font-size: 1.4rem;
 }
+
+/* 目录收起按钮样式 */
+.toc-toggle-btn {
+    float: right;
+    margin-right: 15px;
+    cursor: pointer;
+    color: #999;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.toc-toggle-btn:hover {
+    color: #6b96f3;
+    background-color: rgba(107, 150, 243, 0.1);
+}
+
+.toc-toggle-btn i {
+    transition: transform 0.3s ease;
+}
+
+/* 目录收起状态 */
+#toc-aside {
+    transition: all 0.3s ease;
+}
+
+#toc-aside.collapsed {
+    width: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+#toc-aside.collapsed .toc-widget {
+    display: none;
+}
+
+/* 文章内容居中样式 */
+#main-content {
+    transition: all 0.3s ease;
+}
+
+#main-content.centered-content {
+    float: none;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* 目录展开时隐藏悬浮按钮 */
+#toc-aside.expanded ~ #floating-toc-btn {
+    display: none !important;
+}

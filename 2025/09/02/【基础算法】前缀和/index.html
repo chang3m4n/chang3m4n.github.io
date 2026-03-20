@@ -435,7 +435,7 @@
 <p>[!NOTE]</p>
 <p>哈希表必须提前插入一项（0，-1），表示前缀和为0的位置在-1处，比如要求和为7的数组长度，在位置2处应查询是否存在 7 - 7 &#x3D; 0的键，查到结果为-1，说明从0-2整个子串是最长的。</p>
 </blockquote>
-<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">int sum = 0; //i位置的前缀和</span><br><span class="line">int aim;  //目标和</span><br><span class="line">int ans = 0; //答案</span><br><span class="line">std::unordered_map&lt;int,int&gt; umap=&#123;&#125;;</span><br><span class="line">umap.insert(&#123;0,-1&#125;); //重要</span><br><span class="line">for(int i=0;i&lt;len;i++)&#123;</span><br><span class="line">    sum+=num[i];</span><br><span class="line">    auto search = umap.find(sum[i]-aim);</span><br><span class="line">    if(search!=umap.end())</span><br><span class="line">        ans = max(i-(search-&gt;second),ans);</span><br><span class="line">    else ans = i + 1;</span><br><span class="line"> 	if(umap.find(sum[i])!=umap.end())</span><br><span class="line">        umap.insert(&#123;sum[i],i&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs excel"><span class="hljs-built_in">int</span> <span class="hljs-built_in">sum</span> = <span class="hljs-number">0</span>; //i位置的前缀和<br><span class="hljs-built_in">int</span> aim;  //目标和<br><span class="hljs-built_in">int</span> ans = <span class="hljs-number">0</span>; //答案<br>s<span class="hljs-symbol">td:</span><span class="hljs-symbol">:un</span>ordered_map&lt;<span class="hljs-built_in">int</span>,<span class="hljs-built_in">int</span>&gt; umap=&#123;&#125;;<br>umap.insert(&#123;<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>&#125;); //重要<br>for(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-built_in">len</span>;i++)&#123;<br>    <span class="hljs-built_in">sum</span>+=num[i];<br>    auto <span class="hljs-built_in">search</span> = umap.find(<span class="hljs-built_in">sum</span>[i]-aim);<br>    <span class="hljs-built_in">if</span>(<span class="hljs-built_in">search</span>!=umap.end())<br>        ans = <span class="hljs-built_in">max</span>(i-(<span class="hljs-built_in">search</span>-&gt;<span class="hljs-built_in">second</span>),ans);<br>    else ans = i + <span class="hljs-number">1</span>;<br> 	<span class="hljs-built_in">if</span>(umap.find(<span class="hljs-built_in">sum</span>[i])!=umap.end())<br>        umap.insert(&#123;<span class="hljs-built_in">sum</span>[i],i&#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -452,7 +452,7 @@
 <p><strong>示例 1：</strong></p>
 <p>输入：hours &#x3D; [9,9,6,0,6,6,9]<br>输出：3<br>解释：最长的表现良好时间段是 [9,9,6]。</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;unordered_map&gt;</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int longestWPI(vector&lt;int&gt;&amp; hours) &#123;</span><br><span class="line">        std::unordered_map&lt;int,int&gt; umap=&#123;&#125;;</span><br><span class="line">        //将时间表转换为1,-1</span><br><span class="line">        int len = hours.size();</span><br><span class="line">        int ans=0;</span><br><span class="line">        vector&lt;int&gt; sum(len);</span><br><span class="line">        if(hours[0]&gt;8) sum[0]=1;</span><br><span class="line">        else sum[0]=-1;</span><br><span class="line">        umap.insert(&#123;0,-1&#125;);</span><br><span class="line">        for(int i=0;i&lt;len;i++)&#123;</span><br><span class="line">            if(hours[i]&gt;8)&#123;</span><br><span class="line">                hours[i]=1;</span><br><span class="line">            &#125;else hours[i]= -1;</span><br><span class="line"></span><br><span class="line">            if(i&gt;=1) </span><br><span class="line">            sum[i]= sum[i-1]+hours[i];</span><br><span class="line"></span><br><span class="line">            if(sum[i]&gt;0) ans = i+1;  //不是求和等于目标值，而是&gt;目标值，利用函数单调性得出判定条件</span><br><span class="line">            else&#123;</span><br><span class="line">                auto search = umap.find(sum[i]-1);</span><br><span class="line">                if(search!=umap.end())</span><br><span class="line">                    ans = max(i-(search-&gt;second),ans);</span><br><span class="line">                //哈希表存sum[i]：最早出现位置</span><br><span class="line">            </span><br><span class="line">            &#125;</span><br><span class="line">            if(umap.find(sum[i])!=umap.end())</span><br><span class="line">                umap.insert(&#123;sum[i],i&#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;unordered_map&gt;</span></span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">longestWPI</span><span class="hljs-params">(vector&lt;<span class="hljs-type">int</span>&gt;&amp; hours)</span> </span>&#123;<br>        std::unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; umap=&#123;&#125;;<br>        <span class="hljs-comment">//将时间表转换为1,-1</span><br>        <span class="hljs-type">int</span> len = hours.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> ans=<span class="hljs-number">0</span>;<br>        <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">sum</span><span class="hljs-params">(len)</span></span>;<br>        <span class="hljs-keyword">if</span>(hours[<span class="hljs-number">0</span>]&gt;<span class="hljs-number">8</span>) sum[<span class="hljs-number">0</span>]=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> sum[<span class="hljs-number">0</span>]=<span class="hljs-number">-1</span>;<br>        umap.<span class="hljs-built_in">insert</span>(&#123;<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>&#125;);<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;len;i++)&#123;<br>            <span class="hljs-keyword">if</span>(hours[i]&gt;<span class="hljs-number">8</span>)&#123;<br>                hours[i]=<span class="hljs-number">1</span>;<br>            &#125;<span class="hljs-keyword">else</span> hours[i]= <span class="hljs-number">-1</span>;<br><br>            <span class="hljs-keyword">if</span>(i&gt;=<span class="hljs-number">1</span>) <br>            sum[i]= sum[i<span class="hljs-number">-1</span>]+hours[i];<br><br>            <span class="hljs-keyword">if</span>(sum[i]&gt;<span class="hljs-number">0</span>) ans = i<span class="hljs-number">+1</span>;  <span class="hljs-comment">//不是求和等于目标值，而是&gt;目标值，利用函数单调性得出判定条件</span><br>            <span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-keyword">auto</span> search = umap.<span class="hljs-built_in">find</span>(sum[i]<span class="hljs-number">-1</span>);<br>                <span class="hljs-keyword">if</span>(search!=umap.<span class="hljs-built_in">end</span>())<br>                    ans = <span class="hljs-built_in">max</span>(i-(search-&gt;second),ans);<br>                <span class="hljs-comment">//哈希表存sum[i]：最早出现位置</span><br>            <br>            &#125;<br>            <span class="hljs-keyword">if</span>(umap.<span class="hljs-built_in">find</span>(sum[i])!=umap.<span class="hljs-built_in">end</span>())<br>                umap.<span class="hljs-built_in">insert</span>(&#123;sum[i],i&#125;);<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
 
 
                 
@@ -739,7 +739,14 @@
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div class="toc-title">
+                <i class="far fa-list-alt"></i>&nbsp;&nbsp;目录
+                
+                <span class="toc-toggle-btn" title="收起/展开目录">
+                    <i class="fas fa-chevron-right"></i>
+                </span>
+                
+            </div>
             <div id="toc-content"></div>
         </div>
     </div>
@@ -747,7 +754,7 @@
 
 <!-- TOC 悬浮按钮. -->
 
-<div id="floating-toc-btn" class="hide-on-med-and-down">
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="display: none;">
     <a class="btn-floating btn-large bg-color">
         <i class="fas fa-list-ul"></i>
     </a>
@@ -803,15 +810,35 @@
         const expandedClass = 'expanded';
         let $tocAside = $('#toc-aside');
         let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
+        let $tocToggleBtn = $('.toc-toggle-btn');
+        let $floatingTocBtn = $('#floating-toc-btn');
+        
+        function toggleToc() {
             if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
+                // 收起目录
+                $tocAside.removeClass(expandedClass).addClass('collapsed');
+                $mainContent.removeClass('l9').addClass('centered-content');
+                $tocToggleBtn.find('i').removeClass('fa-chevron-right').addClass('fa-chevron-left');
+                $floatingTocBtn.show();
             } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
+                // 展开目录
+                $tocAside.addClass(expandedClass).removeClass('collapsed');
+                $mainContent.addClass('l9').removeClass('centered-content');
+                $tocToggleBtn.find('i').removeClass('fa-chevron-left').addClass('fa-chevron-right');
+                $floatingTocBtn.hide();
             }
             fixPostCardWidth('artDetail', 'prenext-posts');
+        }
+        
+        // 点击目录标题栏的收起按钮
+        $tocToggleBtn.click(function(e) {
+            e.stopPropagation();
+            toggleToc();
+        });
+        
+        // 点击悬浮按钮展开目录
+        $('#floating-toc-btn .btn-floating').click(function () {
+            toggleToc();
         });
         
     });
@@ -897,16 +924,6 @@
             
             
             
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
             
             <br>
 

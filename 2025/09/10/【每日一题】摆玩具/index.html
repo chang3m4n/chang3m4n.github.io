@@ -358,12 +358,12 @@
 </blockquote>
 <p>一开始漏条件了，没看见分成k段是已知的。。。然后看到标签打的贪心，但是看了题解感觉和贪心就沾了一丁点关系。。这就是个数学题。。</p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>题目要求无非就是找到分段的位置，比如3，6，10，12，15，砍两刀，假设分成 3 6 10 | 12 | 15，极差和为（10-3）+ 0 + 0 &#x3D; 7，可以发现7其实是第一段内每相邻两个数的差之和（6-3）+（10-6），而砍之前每相邻两数之差的总和sum与分段之后的极差之和aim两者的关系是，<strong>aim &#x3D; sum - k个被切分位置前后两数的差loss</strong>，这个例子里loss分别为（12-10）和（15-12），而sum值是固定的。由此可知，要想aim最小，即loss最大。每个位置都有loss，求出loss数组，进行排序，减去最后k个数即为所求。（非要说贪心的话就是每次减去的都是最大值。。）</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n,k;</span><br><span class="line">    cin &gt;&gt;n&gt;&gt;k;</span><br><span class="line">    vector&lt;int&gt; h(n);</span><br><span class="line">    vector&lt;int&gt; b(n-1);</span><br><span class="line">    int result = 0;</span><br><span class="line">    for(int i=0;i&lt;n;i++)&#123;</span><br><span class="line">      cin &gt;&gt; h[i];</span><br><span class="line">      if(i!=0)&#123;</span><br><span class="line">        b[i-1] = h[i] - h[i-1];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sort(b.begin(), b.end());</span><br><span class="line">    //忽然发现k是分段数不是切分次数</span><br><span class="line">    for(int i=0;i&lt;n-k;i++)&#123;</span><br><span class="line">      result += b[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; result;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> n,k;<br>    cin &gt;&gt;n&gt;&gt;k;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">h</span><span class="hljs-params">(n)</span></span>;<br>    <span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">b</span><span class="hljs-params">(n<span class="hljs-number">-1</span>)</span></span>;<br>    <span class="hljs-type">int</span> result = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)&#123;<br>      cin &gt;&gt; h[i];<br>      <span class="hljs-keyword">if</span>(i!=<span class="hljs-number">0</span>)&#123;<br>        b[i<span class="hljs-number">-1</span>] = h[i] - h[i<span class="hljs-number">-1</span>];<br>      &#125;<br>    &#125;<br>    <span class="hljs-built_in">sort</span>(b.<span class="hljs-built_in">begin</span>(), b.<span class="hljs-built_in">end</span>());<br>    <span class="hljs-comment">//忽然发现k是分段数不是切分次数</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n-k;i++)&#123;<br>      result += b[i];<br>    &#125;<br>    cout &lt;&lt; result;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
 <p>现在打算逐渐过渡到cpp来写，每次补充一点相关知识：</p>
-<h2 id="sort函数用法"><a href="#sort函数用法" class="headerlink" title="sort函数用法"></a>sort函数用法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">//sort 是不稳定排序（相等元素的相对位置可能改变） stable_sort稳定 时间复杂度为 O(nlogn)</span><br><span class="line"></span><br><span class="line">sort(起始地址, 结束地址（左闭右开）, [比较函数]（可选）); //默认升序</span><br><span class="line"></span><br><span class="line">//对容器排序</span><br><span class="line">#include&lt;vector&gt;</span><br><span class="line">vector&lt;int&gt; vec = &#123;5, 2, 7, 3&#125;;</span><br><span class="line">sort(vec.begin(), vec.end());</span><br><span class="line"></span><br><span class="line">// 降序排序（需要包含 &lt;functional&gt; 头文件）</span><br><span class="line">sort(arr, arr + n, greater&lt;int&gt;());</span><br><span class="line"></span><br><span class="line">// 自定义比较函数</span><br><span class="line">bool compare(int a, int b) &#123;</span><br><span class="line">    return a &gt; b; // 降序</span><br><span class="line">&#125;</span><br><span class="line">sort(arr, arr + n, compare); </span><br><span class="line"></span><br><span class="line">//自定义类型排序（必须有比较函数）</span><br><span class="line">bool compareScore(const Student&amp; a, const Student&amp; b) &#123;</span><br><span class="line">    return a.score &gt; b.score;</span><br><span class="line">&#125;</span><br><span class="line">vector&lt;Student&gt; students = &#123;</span><br><span class="line">        &#123;&quot;Alice&quot;, 85&#125;,</span><br><span class="line">        &#123;&quot;Bob&quot;, 92&#125;,</span><br><span class="line">        &#123;&quot;Charlie&quot;, 78&#125;</span><br><span class="line">    &#125;;</span><br><span class="line">sort(students.begin(), students.end(), compareScore);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="sort函数用法"><a href="#sort函数用法" class="headerlink" title="sort函数用法"></a>sort函数用法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;algorithm&gt;</span></span><br><span class="hljs-comment">//sort 是不稳定排序（相等元素的相对位置可能改变） stable_sort稳定 时间复杂度为 O(nlogn)</span><br><br><span class="hljs-built_in">sort</span>(起始地址, 结束地址（左闭右开）, [比较函数]（可选）); <span class="hljs-comment">//默认升序</span><br><br><span class="hljs-comment">//对容器排序</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;vector&gt;</span></span><br>vector&lt;<span class="hljs-type">int</span>&gt; vec = &#123;<span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">3</span>&#125;;<br><span class="hljs-built_in">sort</span>(vec.<span class="hljs-built_in">begin</span>(), vec.<span class="hljs-built_in">end</span>());<br><br><span class="hljs-comment">// 降序排序（需要包含 &lt;functional&gt; 头文件）</span><br><span class="hljs-built_in">sort</span>(arr, arr + n, <span class="hljs-built_in">greater</span>&lt;<span class="hljs-type">int</span>&gt;());<br><br><span class="hljs-comment">// 自定义比较函数</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">compare</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> a &gt; b; <span class="hljs-comment">// 降序</span><br>&#125;<br><span class="hljs-built_in">sort</span>(arr, arr + n, compare); <br><br><span class="hljs-comment">//自定义类型排序（必须有比较函数）</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">compareScore</span><span class="hljs-params">(<span class="hljs-type">const</span> Student&amp; a, <span class="hljs-type">const</span> Student&amp; b)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> a.score &gt; b.score;<br>&#125;<br>vector&lt;Student&gt; students = &#123;<br>        &#123;<span class="hljs-string">&quot;Alice&quot;</span>, <span class="hljs-number">85</span>&#125;,<br>        &#123;<span class="hljs-string">&quot;Bob&quot;</span>, <span class="hljs-number">92</span>&#125;,<br>        &#123;<span class="hljs-string">&quot;Charlie&quot;</span>, <span class="hljs-number">78</span>&#125;<br>    &#125;;<br><span class="hljs-built_in">sort</span>(students.<span class="hljs-built_in">begin</span>(), students.<span class="hljs-built_in">end</span>(), compareScore);<br><br></code></pre></td></tr></table></figure>
 
 
                 
@@ -652,7 +652,14 @@
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div class="toc-title">
+                <i class="far fa-list-alt"></i>&nbsp;&nbsp;目录
+                
+                <span class="toc-toggle-btn" title="收起/展开目录">
+                    <i class="fas fa-chevron-right"></i>
+                </span>
+                
+            </div>
             <div id="toc-content"></div>
         </div>
     </div>
@@ -660,7 +667,7 @@
 
 <!-- TOC 悬浮按钮. -->
 
-<div id="floating-toc-btn" class="hide-on-med-and-down">
+<div id="floating-toc-btn" class="hide-on-med-and-down" style="display: none;">
     <a class="btn-floating btn-large bg-color">
         <i class="fas fa-list-ul"></i>
     </a>
@@ -716,15 +723,35 @@
         const expandedClass = 'expanded';
         let $tocAside = $('#toc-aside');
         let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
+        let $tocToggleBtn = $('.toc-toggle-btn');
+        let $floatingTocBtn = $('#floating-toc-btn');
+        
+        function toggleToc() {
             if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
+                // 收起目录
+                $tocAside.removeClass(expandedClass).addClass('collapsed');
+                $mainContent.removeClass('l9').addClass('centered-content');
+                $tocToggleBtn.find('i').removeClass('fa-chevron-right').addClass('fa-chevron-left');
+                $floatingTocBtn.show();
             } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
+                // 展开目录
+                $tocAside.addClass(expandedClass).removeClass('collapsed');
+                $mainContent.addClass('l9').removeClass('centered-content');
+                $tocToggleBtn.find('i').removeClass('fa-chevron-left').addClass('fa-chevron-right');
+                $floatingTocBtn.hide();
             }
             fixPostCardWidth('artDetail', 'prenext-posts');
+        }
+        
+        // 点击目录标题栏的收起按钮
+        $tocToggleBtn.click(function(e) {
+            e.stopPropagation();
+            toggleToc();
+        });
+        
+        // 点击悬浮按钮展开目录
+        $('#floating-toc-btn .btn-floating').click(function () {
+            toggleToc();
         });
         
     });
@@ -810,16 +837,6 @@
             
             
             
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
             
             <br>
 
