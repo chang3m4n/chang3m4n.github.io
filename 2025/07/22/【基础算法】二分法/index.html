@@ -127,28 +127,6 @@
     
   </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>友情链接</span>
-    </a>
-    
-  </li>
-  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -229,28 +207,6 @@
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
 			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			友情链接
 		</a>
           
         </li>
@@ -345,6 +301,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -431,7 +390,18 @@
 </thead>
 </table>
 <p>例如如上序列，左端3-&gt;8增长，右端4-&gt;1衰减。由此特性可知，无论中间的值如何变化，都必然存在一个极大值。第一轮mid指向6，左侧8-&gt;6衰减，说明3-6之间存在极大值；右侧6-&gt;9增长，说明6-1之间也存在极大值。</p>
-<h2 id="算法模板"><a href="#算法模板" class="headerlink" title="算法模板"></a><strong>算法模板</strong></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">//left = 左边界 right = 右边界<br><span class="hljs-keyword">while</span>(left&lt;=right)&#123;<br>    mid = (left + right)/<span class="hljs-number">2</span>; //位运算可以写成mid = left + (right-left)&gt;&gt;<span class="hljs-number">1</span><br>    //假设找满足条件的最大值<br>    <span class="hljs-keyword">if</span>(judge(mid))&#123;   <br>        left = mid + <span class="hljs-number">1</span>; <br>        ans = mid;<br>	&#125;<span class="hljs-keyword">else</span>&#123;<br>        right = mid - <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="算法模板"><a href="#算法模板" class="headerlink" title="算法模板"></a><strong>算法模板</strong></h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//left = 左边界 right = 右边界</span>
+<span class="token keyword">while</span><span class="token punctuation">(</span>left<span class="token operator">&lt;=</span>right<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    mid <span class="token operator">=</span> <span class="token punctuation">(</span>left <span class="token operator">+</span> right<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//位运算可以写成mid = left + (right-left)>>1</span>
+    <span class="token comment">//假设找满足条件的最大值</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">judge</span><span class="token punctuation">(</span>mid<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>   
+        left <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> 
+        ans <span class="token operator">=</span> mid<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+        right <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -446,7 +416,70 @@
 <p>例如一块 6×5的巧克力可以切出 6块 2×2的巧克力或者 2 块 3×3 的巧克力。</p>
 <p>当然小朋友们都希望得到的巧克力尽可能大，你能帮小明计算出最大的边长是多少么？</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#include &lt;stdio.h&gt;</span><br><span class="hljs-comment">#include &lt;stdlib.h&gt;</span><br><br><span class="hljs-built_in">int</span> judge(<span class="hljs-built_in">int</span> **<span class="hljs-built_in">map</span>,<span class="hljs-built_in">int</span> middle,<span class="hljs-built_in">int</span> N ,<span class="hljs-built_in">int</span> K)&#123;<br><br>  <span class="hljs-built_in">int</span> num = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>;i&lt;N;i++)&#123;<br>    <span class="hljs-built_in">int</span> row = <span class="hljs-built_in">map</span>[i][<span class="hljs-number">0</span>];<br>    <span class="hljs-built_in">int</span> col = <span class="hljs-built_in">map</span>[i][<span class="hljs-number">1</span>];<br>    <span class="hljs-keyword">if</span>(row &gt;=middle &amp;&amp; col &gt;=middle)&#123;   <br>      //如果第i块巧克力能用middle分，计算能分出来的块数<br>      num +=row/middle*(col/middle);<br>    &#125;<br>  &#125;<br>  //比较快数是否大于K<br>  <span class="hljs-keyword">if</span>(num&gt;=K) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">else</span>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-built_in">int</span> erfen(<span class="hljs-built_in">int</span>**<span class="hljs-built_in">map</span>,<span class="hljs-built_in">int</span> N, <span class="hljs-built_in">int</span> K,<span class="hljs-built_in">int</span> flag)&#123;<br>  <span class="hljs-built_in">int</span> left = <span class="hljs-number">1</span>;<br>  <span class="hljs-built_in">int</span> right = flag;<br>  <span class="hljs-built_in">int</span> middle = (left + right)/<span class="hljs-number">2</span>;<br>  <span class="hljs-built_in">int</span> result = <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">while</span>(left&lt;=right)&#123;<br>  	<span class="hljs-built_in">int</span> k=judge(<span class="hljs-built_in">map</span>,middle,N,K);<br>    <span class="hljs-keyword">if</span>(k)&#123;<br>      	left = middle + <span class="hljs-number">1</span>;<br>    	result = middle;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>		right = middle -<span class="hljs-number">1</span>;<br>    &#125;<br>    middle = (left+right)/<span class="hljs-number">2</span>;<br>  &#125;<br>  <span class="hljs-keyword">return</span> result;<br>&#125;<br><br><span class="hljs-built_in">int</span> main(<span class="hljs-built_in">int</span> argc, char *argv[])<br>&#123;<br>  <span class="hljs-built_in">int</span> N;<br>  <span class="hljs-built_in">int</span> K;<br>  <span class="hljs-built_in">int</span> flag=<span class="hljs-number">1</span>;<br>  scanf(<span class="hljs-string">&quot;%d&quot;</span>,&amp;N);<br>  scanf(<span class="hljs-string">&quot;%d&quot;</span>,&amp;K);<br>  <span class="hljs-built_in">int</span> **<span class="hljs-built_in">map</span> = (<span class="hljs-built_in">int</span>**)malloc(sizeof(<span class="hljs-built_in">int</span>*)*N);<br>  <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>;i&lt;N;i++)&#123;<br>    <span class="hljs-built_in">map</span>[i]=(<span class="hljs-built_in">int</span>*)malloc(sizeof(<span class="hljs-built_in">int</span>)*<span class="hljs-number">2</span>);<br>  &#125;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>;i&lt;N;i++)&#123;<br>    <span class="hljs-built_in">int</span> temp1;<br>    scanf(<span class="hljs-string">&quot;%d&quot;</span>,&amp;temp1);<br>    <span class="hljs-built_in">map</span>[i][<span class="hljs-number">0</span>]=temp1;<br>    <span class="hljs-built_in">int</span> temp2;<br>    scanf(<span class="hljs-string">&quot;%d&quot;</span>,&amp;temp2);<br>    <span class="hljs-built_in">map</span>[i][<span class="hljs-number">1</span>]=temp2;<br>  //记录最大边长<br>  <span class="hljs-keyword">if</span>(temp1&gt;flag) flag=temp1;<br>    <span class="hljs-keyword">if</span>(temp2&gt;flag) flag=temp2;<br>  &#125;<br><br>  <span class="hljs-built_in">int</span> result = erfen(<span class="hljs-built_in">map</span>,N,K,flag);<br>  printf(<span class="hljs-string">&quot;%d&quot;</span>,result);<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+
+<span class="token keyword">int</span> <span class="token function">judge</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span>map<span class="token punctuation">,</span><span class="token keyword">int</span> middle<span class="token punctuation">,</span><span class="token keyword">int</span> N <span class="token punctuation">,</span><span class="token keyword">int</span> K<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+
+  <span class="token keyword">int</span> num <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>N<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> row <span class="token operator">=</span> map<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> col <span class="token operator">=</span> map<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>row <span class="token operator">>=</span>middle <span class="token operator">&amp;&amp;</span> col <span class="token operator">>=</span>middle<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>   
+      <span class="token comment">//如果第i块巧克力能用middle分，计算能分出来的块数</span>
+      num <span class="token operator">+=</span>row<span class="token operator">/</span>middle<span class="token operator">*</span><span class="token punctuation">(</span>col<span class="token operator">/</span>middle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">//比较快数是否大于K</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>num<span class="token operator">>=</span>K<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">else</span>  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">erfen</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token operator">*</span>map<span class="token punctuation">,</span><span class="token keyword">int</span> N<span class="token punctuation">,</span> <span class="token keyword">int</span> K<span class="token punctuation">,</span><span class="token keyword">int</span> flag<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> right <span class="token operator">=</span> flag<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> middle <span class="token operator">=</span> <span class="token punctuation">(</span>left <span class="token operator">+</span> right<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> result <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>left<span class="token operator">&lt;=</span>right<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+  	<span class="token keyword">int</span> k<span class="token operator">=</span><span class="token function">judge</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span>middle<span class="token punctuation">,</span>N<span class="token punctuation">,</span>K<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      	left <span class="token operator">=</span> middle <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    	result <span class="token operator">=</span> middle<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+		right <span class="token operator">=</span> middle <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    middle <span class="token operator">=</span> <span class="token punctuation">(</span>left<span class="token operator">+</span>right<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  <span class="token keyword">int</span> N<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> K<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> flag<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>N<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>K<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">*</span>map <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">*</span>N<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>N<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    map<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>N<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> temp1<span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>temp1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>temp1<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> temp2<span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>temp2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>temp2<span class="token punctuation">;</span>
+  <span class="token comment">//记录最大边长</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>temp1<span class="token operator">></span>flag<span class="token punctuation">)</span> flag<span class="token operator">=</span>temp1<span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>temp2<span class="token operator">></span>flag<span class="token punctuation">)</span> flag<span class="token operator">=</span>temp2<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">int</span> result <span class="token operator">=</span> <span class="token function">erfen</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span>N<span class="token punctuation">,</span>K<span class="token punctuation">,</span>flag<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <blockquote>
 <p>[!NOTE]</p>
@@ -724,28 +757,32 @@
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
 
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+  <!-- 彩虹括号插件 -->
+  <script type="text/javascript" src="/libs/prism/prism-rainbow-brackets.js"></script>
+
 
 <!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
 
 
 <!-- 代码块复制 -->
 
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
 
 <!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
 
 
 
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title">
-                <i class="far fa-list-alt"></i>&nbsp;&nbsp;目录
-                
-                <span class="toc-toggle-btn" title="收起/展开目录">
-                    <i class="fas fa-chevron-right"></i>
-                </span>
-                
-            </div>
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
     </div>
@@ -753,7 +790,7 @@
 
 <!-- TOC 悬浮按钮. -->
 
-<div id="floating-toc-btn" class="hide-on-med-and-down" style="display: none;">
+<div id="floating-toc-btn" class="hide-on-med-and-down">
     <a class="btn-floating btn-large bg-color">
         <i class="fas fa-list-ul"></i>
     </a>
@@ -809,35 +846,15 @@
         const expandedClass = 'expanded';
         let $tocAside = $('#toc-aside');
         let $mainContent = $('#main-content');
-        let $tocToggleBtn = $('.toc-toggle-btn');
-        let $floatingTocBtn = $('#floating-toc-btn');
-        
-        function toggleToc() {
+        $('#floating-toc-btn .btn-floating').click(function () {
             if ($tocAside.hasClass(expandedClass)) {
-                // 收起目录
-                $tocAside.removeClass(expandedClass).addClass('collapsed');
-                $mainContent.removeClass('l9').addClass('centered-content');
-                $tocToggleBtn.find('i').removeClass('fa-chevron-right').addClass('fa-chevron-left');
-                $floatingTocBtn.show();
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
             } else {
-                // 展开目录
-                $tocAside.addClass(expandedClass).removeClass('collapsed');
-                $mainContent.addClass('l9').removeClass('centered-content');
-                $tocToggleBtn.find('i').removeClass('fa-chevron-left').addClass('fa-chevron-right');
-                $floatingTocBtn.hide();
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
             }
             fixPostCardWidth('artDetail', 'prenext-posts');
-        }
-        
-        // 点击目录标题栏的收起按钮
-        $tocToggleBtn.click(function(e) {
-            e.stopPropagation();
-            toggleToc();
-        });
-        
-        // 点击悬浮按钮展开目录
-        $('#floating-toc-btn .btn-floating').click(function () {
-            toggleToc();
         });
         
     });

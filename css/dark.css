@@ -157,7 +157,7 @@ body.DarkMode header .menus_item_child:before {
     border-color: transparent transparent rgba(45, 42, 52, 0.8);
 }
 body.DarkMode #searchModal, .DarkMode .h-color, .DarkMode header .menus_item_child {
-    background: rgba(45, 42, 52, 0.8);
+    background: #3b3b3b;
 }
 body.DarkMode .card-content p > code,
 body.DarkMode .card-content h2 > code,
@@ -202,6 +202,42 @@ body.DarkMode .aplayer {
     user-select: none;
     line-height: normal;
     position: relative;
+}
+
+/* 确保夜间模式下吸底播放器的位置与白天模式相同 */
+body.DarkMode .aplayer.aplayer-fixed {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+    z-index: 99 !important;
+    overflow: visible !important;
+    max-width: 400px !important;
+    box-shadow: none !important;
+    background: rgb(42 34 34) !important;
+}
+
+body.DarkMode .aplayer.aplayer-fixed .aplayer-body {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 !important;
+    z-index: 99 !important;
+    background: rgb(42 34 34) !important;
+    padding-right: 18px !important;
+    transition: all .3s ease !important;
+    max-width: 400px !important;
+}
+
+/* 确保夜间模式下收起的音乐播放器与白天模式一致 */
+body.DarkMode .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+    left: -66px !important;
+}
+
+body.DarkMode .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+    left: 0 !important;
 }
 body.DarkMode .aplayer .aplayer-list ol li.aplayer-list-light {
     background: #666666;
