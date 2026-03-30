@@ -1,11 +1,11 @@
 /*夜间适配*/
 .night .tip {
-    filter: brightness(0.7);
+    color: #383434;
 }
 
 /* snote夜间模式 */
 .night .tip{
-    color: #4c4948;
+    color: #111010;
 }
 
 /* 背景颜色变灰色 */
@@ -44,7 +44,7 @@ body.DarkMode .v[data-class="v"] .vcount .vnum,
 body.DarkMode .valine-card .comment_headling,
 body.DarkMode a body.DarkMode table,
 body.DarkMode article .article-content .summary,
-body.DarkMode article .article-tags .chip,
+/* body.DarkMode article .article-tags .chip, */
 body.DarkMode .card .card-image .card-title,
 body.DarkMode div.jqcloud a,
 body.DarkMode footer .copy-right,
@@ -64,42 +64,42 @@ body.DarkMode p,
 body.DarkMode pre,
 body.DarkMode .markmap-container svg g div,
 body.DarkMode .read .bg-cover .description {
-    color: rgba(255, 255, 255, 0.6); /*.85为透明度，可依据需求修改*/
+    color: rgba(255, 255, 255, 0.8); /*.85为透明度，可依据需求修改*/
 }
 body.DarkMode .fArticleTitle, body.DarkMode .fArticleAuthor, body.DarkMode .fArticleUpdate {
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
 }
 body.DarkMode .v[data-class="v"] .vinput, .v[data-class="v"] .veditor, .v[data-class="v"] p, .v[data-class="v"] pre code, .v[data-class="v"] .status-bar {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
 }
 body.DarkMode blockquote {
     background-color: #666 !important;
-    border-left: 5px solid #6b96f3 !important;
-    color: rgba(255, 255, 255, 0.6);
+    border-left: 5px solid #030406 !important;
+    color: rgba(255, 255, 255, 0.8);
 }
 body.DarkMode .nav-menu li .sub-nav li a {
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
 }
 body.DarkMode th td li {
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
     background-color: #2f3742 !important;
 }
 body.DarkMode .prev-next .article-badge {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 body.DarkMode header .side-nav .menu-list a {
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
 }
 
 body.DarkMode .mobile-menu-list a i {
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
 }
 body.DarkMode .bg-color {
     background-image:linear-gradient(to right, #3b3b3b 0, rgb(59 59 59) 100%);
     opacity:.8
 }
 body.DarkMode .progress-bar {
-    background: linear-gradient(to right, #bf7030 0%, #dfc60d 100%);
+    background: linear-gradient(to right, #3069bf 0%, #0d65df 100%);
 }
 body.DarkMode span.bg-color {
     background-image:linear-gradient(to right, #282c34 0, rgba(52,50,50,0.7) 100%)
@@ -119,33 +119,124 @@ body.DarkMode #waline .wl-btn,
 body.DarkMode #waline .wl-footer .wl-action svg,
 body.DarkMode #waline .wl-reply svg,
 body.DarkMode #waline .wl-info span,
-body.DarkMode #waline .wl-info div,
-body.DarkMode .toc-widget,
-body.DarkMode .tag_share .chip,
+body.DarkMode #waline .wl-info div {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+
+/* 版权声明样式 */
+body.DarkMode .reprint {
+    background-color: #3b3b3b !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    padding: 15px !important;
+    border-radius: 8px !important;
+    margin: 20px 0 !important;
+}
+
+body.DarkMode .reprint__author,
+body.DarkMode .reprint__type,
+body.DarkMode .reprint__notice {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.DarkMode .reprint__info a {
+    color: #6b96f3 !important;
+}
+
 body.DarkMode .archive-container,
-body.DarkMode .modal,
-body.DarkMode .v[data-class="v"] .vcount,
+body.DarkMode .modal {
+    background-color: #3b3b3b !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.DarkMode .v[data-class="v"] .vcount {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
 body.DarkMode header .side-nav,
 body.DarkMode header .side-nav .menu-list .m-nav-show {
-    filter: invert(0.8);
+    background-color: #3b3b3b !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 目录和标签样式 */
+body.DarkMode .toc-widget {
+    color: rgba(255, 255, 255, 0.8) !important;
+    background-color: #3b3b3b !important;
+}
+
+body.DarkMode .toc-widget a {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* 目录高亮样式 */
+body.DarkMode #toc-content .is-active-link {
+    color: #6b96f3 !important;
+    font-weight: bold;
+    background-color: rgba(107, 150, 243, 0.1) !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+}
+
+body.DarkMode #toc-content .is-active-link:hover {
+    color: #86c5fc !important;
+    background-color: rgba(134, 197, 252, 0.2) !important;
+}
+
+body.DarkMode #toc-content .toc-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+body.DarkMode #toc-content .toc-link:hover {
+    color: #6b96f3 !important;
+    background-color: rgba(107, 150, 243, 0.1) !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+}
+
+body.DarkMode .tag_share .chip {
+    color: rgba(255, 255, 255, 0.8) !important;
+    background: #5d5a5a !important;
+    border: 1px solid #555555 !important;
+    border-radius: 15px !important;
+    transition: all 0.6s ease-in-out !important;
+}
+
+body.DarkMode .tag_share .chip:hover {
+    color: #ffffff !important;
+    background: #444444 !important;
+}
+
+/* 文章标签样式 */
+body.DarkMode article .article-tags .chip {
+    color: rgba(255, 255, 255, 0.8) !important;
+    background: #333333 !important;
+    border: 1px solid #555555 !important;
+    border-radius: 15px !important;
+    transition: all 0.6s ease-in-out !important;
+}
+
+body.DarkMode article .article-tags .chip:hover {
+    color: #ffffff !important;
+    background: #444444 !important;
 }
 body.DarkMode .waline-card .comment_headling span {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
 }
 body.DarkMode #waline .wl-card .wl-meta span{
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
     background: #666666;
 }
 
 body.DarkMode .reward-tabs img {
-    filter: invert(0.9) !important;
+    opacity: 0.9;
 }
 
 body.DarkMode .tabs .tab a,
 body.DarkMode .tabs .tab {
-    filter: invert(0.8);
     font-weight: bolder;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #3b3b3b !important;
 }
 
 /*首页文章滑动卡片文字*/
@@ -168,21 +259,42 @@ body.DarkMode .card-content h6 > code,
 body.DarkMode .card-content a > code,
 body.DarkMode .card-content td > code,
 body.DarkMode .card-content li > code {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
     background-color: #666666;
 }
 
 body.DarkMode p[style] .img-item {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 body.DarkMode .card-content mark {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
     background-color: #2d2d2d;
 }
+/* 表格样式 */
+body.DarkMode table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+}
+
 body.DarkMode table th {
-    background-color: #666666!important;
-    color: #6b96f3;
+    background-color: #4a4a4a!important;
+    color: #ffffff;
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #666666;
+}
+
+body.DarkMode table td {
+    background-color: #3b3b3b!important;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    border: 1px solid #666666;
+}
+
+body.DarkMode table tr:hover {
+    background-color: #4a4a4a!important;
 }
 .DarkMode .btn-floating, .DarkMode #floating-toc-btn .btn-floating, .DarkMode .btn-floating, .DarkMode #switchspring {
     background-color:rgba(255, 255, 255, 0.6);
@@ -244,34 +356,57 @@ body.DarkMode .aplayer .aplayer-list ol li.aplayer-list-light {
 }
 body.DarkMode .aplayer .aplayer-list ol li:hover {
     background-color: #666666;
-    color: #6b96f3;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 body.DarkMode .aplayer .aplayer-body {
     position: relative;
-    filter: invert(.8);
 }
 
-/*图片滤镜*/
+/*图片样式*/
 body.DarkMode img,
-body.DarkMode strong,
 body.DarkMode .douban-card-img {
-    filter: brightness(0.7);
+    opacity: 0.7;
 }
+
+/* 加粗文字样式 */
+body.DarkMode strong {
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
 /*统计图表暗色样式*/
 body.DarkMode #categories-chart,
 body.DarkMode #category-radar,
 body.DarkMode #post-calendar,
 body.DarkMode #posts-chart,
 body.DarkMode #tags-chart {
-    filter: invert(1);
+    background-color: #3b3b3b;
+    color: rgba(255, 255, 255) !important;
 }
+
+/* 确保雷达图文字颜色正确 */
+body.DarkMode #category-radar text {
+    fill: #ffffff !important;
+}
+
+/* 确保所有ECharts图表文字颜色正确 */
+body.DarkMode .echarts text,
+body.DarkMode #categories-chart text,
+body.DarkMode #category-radar text,
+body.DarkMode #posts-chart text,
+body.DarkMode #tags-chart text {
+    fill: #ffffff !important;
+    color: #ffffff !important;
+}
+
 body.DarkMode #calendar_container, 
 body.DarkMode #uv_container, 
 body.DarkMode #pv_container, 
 body.DarkMode #sources_container, 
 body.DarkMode #map_container {
-    filter: invert(1);
+    background-color: #3b3b3b;
+    color: rgba(255, 255, 255, 0.6);
 }
 body.DarkMode header .brand-logo .logo-img {
     display: none;
@@ -305,21 +440,21 @@ body.DarkMode header .brand-logo .logo-img {
 .DarkMode .our-team h3, 
 .DarkMode .tag-chips span, 
 .DarkMode .timeline-box .contentC, 
-.DarkMode .wrapper, .DarkMode hr, 
+.DarkMode .wrapper, 
+.DarkMode hr, 
 .DarkMode img, 
 .DarkMode li:before {
-    -webkit-filter: brightness(0.8) !important;
-    filter: brightness(0.8) !important;
+    opacity: 0.8;
 }
 body.DarkMode .toc-widget .toc-list-item {
-    color:#000
+    color: rgba(255, 255, 255, 0.8) !important
 }
 body.DarkMode .toc-title {
-    color:#666 !important
+    color: rgba(255, 255, 255, 0.8) !important
 }
 /*toc目录滤镜*/
 body.DarkMode .skillbar .skill-bar-percent {
-    color: #000;
+    color: rgba(255, 255, 255, 0.8) !important;
 }
 
 /*一些细节背景*/
@@ -352,8 +487,8 @@ body.DarkMode .test {
     color: red;
 }
 
-body.DarkMode img, body.DarkMode strong {
-    filter:brightness(.7)
+body.DarkMode img {
+    opacity: 0.7;
 }
 
 body.DarkMode {

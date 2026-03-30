@@ -337,20 +337,24 @@
 
     
 
+    // 检查是否为暗色模式
+    const isDarkMode = document.body.classList.contains('DarkMode');
+    
     let option = {
         title: {
             left: 'center',
             text: '文章分类雷达图',
             textStyle: {
                 fontWeight: 500,
-                fontSize: 22
+                fontSize: 22,
+                color: isDarkMode ? '#ffffff' : '#3C4858'
             }
         },
         tooltip: {},
         radar: {
             name: {
                 textStyle: {
-                    color: '#3C4858'
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
                 }
             },
             indicator: [{"name":"算法学习","max":3},{"name":"每日一题","max":3}],
@@ -365,13 +369,57 @@
             data : [
                 {
                     value : [2,1],
-                    name : '文章分类数量'
+                    name : '文章分类数量',
+                    itemStyle: {
+                        color: '#3ecf8e'
+                    },
+                    areaStyle: {
+                        color: 'rgba(62, 207, 142, 0.2)'
+                    }
                 }
             ]
         }]
     };
 
+    // 初始化图表
     radarChart.setOption(option);
+    
+    // 监听DarkMode类的变化
+    function updateChartTheme() {
+        const isDarkMode = document.body.classList.contains('DarkMode');
+        
+        // 更新图表配置
+        radarChart.setOption({
+            title: {
+                textStyle: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                }
+            },
+            radar: {
+                name: {
+                    textStyle: {
+                        color: isDarkMode ? '#ffffff' : '#3C4858'
+                    }
+                }
+            }
+        });
+    }
+    
+    // 监听DOM变化
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'class') {
+                updateChartTheme();
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        attributes: true
+    });
+    
+    // 初始调用一次
+    updateChartTheme();
 </script>
 
     

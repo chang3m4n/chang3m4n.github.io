@@ -291,6 +291,9 @@
 <script type="text/javascript" src="/libs/echarts/echarts.min.js"></script>
 <script type="text/javascript">
     let myChart = echarts.init(document.getElementById('post-calendar'));
+    
+    // 检查是否为暗色模式
+    const isDarkMode = document.body.classList.contains('DarkMode');
 
     
 
@@ -300,17 +303,17 @@
             text: '文章日历',
             left: 'center',
             textStyle: {
-                color: '#3C4858'
+                color: isDarkMode ? '#ffffff' : '#3C4858'
             }
         },
         tooltip: {
             padding: 10,
-            backgroundColor: '#555',
-            borderColor: '#777',
+            backgroundColor: isDarkMode ? '#333' : '#555',
+            borderColor: isDarkMode ? '#555' : '#777',
             borderWidth: 1,
             formatter: function (obj) {
                 var value = obj.value;
-                return '<div style="font-size: 14px;">' + value[0] + '：' + value[1] + '</div>';
+                return '<div style="font-size: 14px; color: ' + (isDarkMode ? '#ffffff' : '#000000') + ';">' + value[0] + '：' + value[1] + '</div>';
             }
         },
         visualMap: {
@@ -321,6 +324,9 @@
             inRange: {
                 symbol: 'rect',
                 color: ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127']
+            },
+            textStyle: {
+                color: isDarkMode ? '#ffffff' : '#3C4858'
             },
             itemWidth: 12,
             itemHeight: 12,
@@ -345,12 +351,14 @@
             },
             monthLabel: {
                 nameMap: 'cn',
-                fontSize: 11
+                fontSize: 11,
+                color: isDarkMode ? '#ffffff' : '#3C4858'
             },
             dayLabel: {
                 formatter: '{start}  1st',
                 nameMap: 'cn',
-                fontSize: 11
+                fontSize: 11,
+                color: isDarkMode ? '#ffffff' : '#3C4858'
             }
         }],
         series: [{
@@ -362,7 +370,59 @@
 
     };
 
+    // 初始化图表
     myChart.setOption(option);
+    
+    // 监听DarkMode类的变化
+    function updateChartTheme() {
+        const isDarkMode = document.body.classList.contains('DarkMode');
+        
+        // 更新图表配置
+        myChart.setOption({
+            title: {
+                textStyle: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                }
+            },
+            tooltip: {
+                backgroundColor: isDarkMode ? '#333' : '#555',
+                borderColor: isDarkMode ? '#555' : '#777',
+                formatter: function (obj) {
+                    var value = obj.value;
+                    return '<div style="font-size: 14px; color: ' + (isDarkMode ? '#ffffff' : '#000000') + ';">' + value[0] + '：' + value[1] + '</div>';
+                }
+            },
+            visualMap: {
+                textStyle: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                }
+            },
+            calendar: [{
+                monthLabel: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                },
+                dayLabel: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                }
+            }]
+        });
+    }
+    
+    // 监听DOM变化
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'class') {
+                updateChartTheme();
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        attributes: true
+    });
+    
+    // 初始调用一次
+    updateChartTheme();
 </script>
 
     

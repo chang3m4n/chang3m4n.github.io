@@ -459,6 +459,9 @@
     let postsChart = echarts.init(document.getElementById('posts-chart'));
     let categoriesChart = echarts.init(document.getElementById('categories-chart'));
     let tagsChart = echarts.init(document.getElementById('tags-chart'));
+    
+    // 检查是否为暗色模式
+    const isDarkMode = document.body.classList.contains('DarkMode');
 
     
 
@@ -466,17 +469,41 @@
         title: {
             text: '文章发布统计图',
             top: -5,
-            x: 'center'
+            x: 'center',
+            textStyle: {
+                color: isDarkMode ? '#ffffff' : '#3C4858'
+            }
         },
         tooltip: {
-            trigger: 'axis'
+            trigger: 'axis',
+            backgroundColor: isDarkMode ? '#333' : '#fff',
+            borderColor: isDarkMode ? '#555' : '#ddd',
+            textStyle: {
+                color: isDarkMode ? '#ffffff' : '#3C4858'
+            }
         },
         xAxis: {
             type: 'category',
-            data: ["2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03"]
+            data: ["2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03"],
+            axisLabel: {
+                color: isDarkMode ? '#ffffff' : '#3C4858'
+            },
+            axisLine: {
+                lineStyle: {
+                    color: isDarkMode ? '#555' : '#3C4858'
+                }
+            }
         },
         yAxis: {
             type: 'value',
+            axisLabel: {
+                color: isDarkMode ? '#ffffff' : '#3C4858'
+            },
+            axisLine: {
+                lineStyle: {
+                    color: isDarkMode ? '#555' : '#3C4858'
+                }
+            }
         },
         series: [
             {
@@ -513,11 +540,19 @@
         title: {
             text: '文章分类统计图',
             top: -4,
-            x: 'center'
+            x: 'center',
+            textStyle: {
+                color: isDarkMode ? '#ffffff' : '#3C4858'
+            }
         },
         tooltip: {
             trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)"
+            formatter: "{a} <br/>{b} : {c} ({d}%)",
+            backgroundColor: isDarkMode ? '#333' : '#fff',
+            borderColor: isDarkMode ? '#555' : '#ddd',
+            textStyle: {
+                color: isDarkMode ? '#ffffff' : '#3C4858'
+            }
         },
         series: [
             {
@@ -543,18 +578,43 @@
         title: {
             text: 'TOP10 标签统计图',
             top: -5,
-            x: 'center'
+            x: 'center',
+            textStyle: {
+                color: isDarkMode ? '#ffffff' : '#3C4858'
+            }
         },
-        tooltip: {},
+        tooltip: {
+            backgroundColor: isDarkMode ? '#333' : '#fff',
+            borderColor: isDarkMode ? '#555' : '#ddd',
+            textStyle: {
+                color: isDarkMode ? '#ffffff' : '#3C4858'
+            }
+        },
         xAxis: [
             {
                 type: 'category',
-                data: ["算法","前缀","哈希表","子串","二分","思维","排序"]
+                data: ["算法","二分","思维","排序","前缀","哈希表","子串"],
+                axisLabel: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: isDarkMode ? '#555' : '#3C4858'
+                    }
+                }
             }
         ],
         yAxis: [
             {
-                type: 'value'
+                type: 'value',
+                axisLabel: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: isDarkMode ? '#555' : '#3C4858'
+                    }
+                }
             }
         ],
         series: [
@@ -585,10 +645,119 @@
         ]
     };
 
-    // render the charts
+    // 初始化图表
     postsChart.setOption(postsOption);
     categoriesChart.setOption(categoriesOption);
     tagsChart.setOption(tagsOption);
+    
+    // 监听DarkMode类的变化
+    function updateChartsTheme() {
+        const isDarkMode = document.body.classList.contains('DarkMode');
+        
+        // 更新文章发布图表
+        postsChart.setOption({
+            title: {
+                textStyle: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                }
+            },
+            tooltip: {
+                backgroundColor: isDarkMode ? '#333' : '#fff',
+                borderColor: isDarkMode ? '#555' : '#ddd',
+                textStyle: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                }
+            },
+            xAxis: {
+                axisLabel: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: isDarkMode ? '#555' : '#3C4858'
+                    }
+                }
+            },
+            yAxis: {
+                axisLabel: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: isDarkMode ? '#555' : '#3C4858'
+                    }
+                }
+            }
+        });
+        
+        // 更新分类图表
+        categoriesChart.setOption({
+            title: {
+                textStyle: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                }
+            },
+            tooltip: {
+                backgroundColor: isDarkMode ? '#333' : '#fff',
+                borderColor: isDarkMode ? '#555' : '#ddd',
+                textStyle: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                }
+            }
+        });
+        
+        // 更新标签图表
+        tagsChart.setOption({
+            title: {
+                textStyle: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                }
+            },
+            tooltip: {
+                backgroundColor: isDarkMode ? '#333' : '#fff',
+                borderColor: isDarkMode ? '#555' : '#ddd',
+                textStyle: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                }
+            },
+            xAxis: {
+                axisLabel: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: isDarkMode ? '#555' : '#3C4858'
+                    }
+                }
+            },
+            yAxis: {
+                axisLabel: {
+                    color: isDarkMode ? '#ffffff' : '#3C4858'
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: isDarkMode ? '#555' : '#3C4858'
+                    }
+                }
+            }
+        });
+    }
+    
+    // 监听DOM变化
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'class') {
+                updateChartsTheme();
+            }
+        });
+    });
+    
+    observer.observe(document.body, {
+        attributes: true
+    });
+    
+    // 初始调用一次
+    updateChartsTheme();
 </script>
 
 
